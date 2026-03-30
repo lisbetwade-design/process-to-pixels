@@ -109,7 +109,7 @@ export default function Home() {
           <div className="hero-right ghost-grid">
             <div className="status-pill animate-fsu anim-d1">
               <span className="status-dot" />
-              Fully Booked for Q1 2026
+              1 Spot Available for Q2
             </div>
 
             <ul className="hero-service-list animate-fsu anim-d2">
@@ -382,6 +382,62 @@ export default function Home() {
                 Get Started →
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Additional Services */}
+        <div className="reveal" style={{ marginTop: '64px' }}>
+          <p className="label-sm" style={{ color: 'var(--ink-faint)', marginBottom: '24px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Also available</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+
+            {/* Design Systems */}
+            <div className="pricing-card" style={{ padding: '32px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>Design Systems</h3>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                <p className="pricing-price" style={{ fontSize: '36px' }}>$3,499</p>
+                <p className="pricing-period">/ project</p>
+              </div>
+              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>8 – 12 weeks</p>
+              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>Scalable component library & documentation</p>
+              <div className="pricing-divider" />
+              {['Complete design system', 'Component library', 'Design tokens & guidelines', 'Accessibility standards', 'Developer documentation', 'Training & handoff'].map(f => (
+                <div key={f} className="pricing-feature">
+                  <span className="pricing-check">✓</span>
+                  {f}
+                </div>
+              ))}
+              <div style={{ marginTop: '28px' }}>
+                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
+                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                  Get Started →
+                </a>
+              </div>
+            </div>
+
+            {/* UX Audit */}
+            <div className="pricing-card" style={{ padding: '32px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>UX Audit</h3>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                <p className="pricing-price" style={{ fontSize: '36px' }}>$1,299</p>
+                <p className="pricing-period">/ project</p>
+              </div>
+              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>1 – 2 weeks</p>
+              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>Expert review of your existing product experience</p>
+              <div className="pricing-divider" />
+              {['Heuristic evaluation', 'Usability issue report', 'Priority fix recommendations', 'Quick-win opportunities', 'Recorded walkthrough', 'Action plan & next steps'].map(f => (
+                <div key={f} className="pricing-feature">
+                  <span className="pricing-check">✓</span>
+                  {f}
+                </div>
+              ))}
+              <div style={{ marginTop: '28px' }}>
+                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
+                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                  Get Started →
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

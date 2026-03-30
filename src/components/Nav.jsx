@@ -46,10 +46,20 @@ export default function Nav() {
           Process to Pixels<span className="text-accent">.</span>
         </Link>
         {isDesigners ? (
-          <Link to="/" className="nav-switcher">
-            <span className="nav-switcher-dot" />
-            For Founders →
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a
+              href="https://processtopixels.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-newsletter-link"
+            >
+              Newsletter
+            </a>
+            <Link to="/" className="nav-switcher">
+              <span className="nav-switcher-dot" />
+              For Founders →
+            </Link>
+          </div>
         ) : (
           <Link to="/designers" className="nav-switcher">
             <span className="nav-switcher-dot" />
@@ -80,14 +90,24 @@ export default function Nav() {
               )
             })}
           </ul>
-          <a
-            href="https://cal.com/elizaveta-demchenko-oz4d4o/15min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-dark"
-          >
-            Book a 15 min call
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a
+              href="https://processtopixels.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-newsletter-link"
+            >
+              Newsletter
+            </a>
+            <a
+              href="https://cal.com/elizaveta-demchenko-oz4d4o/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-dark"
+            >
+              Book a 15 min call
+            </a>
+          </div>
         </div>
       )}
     </nav>

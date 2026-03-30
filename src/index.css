@@ -212,6 +212,19 @@ body {
 .nav-links a.active {
   color: var(--ink);
 }
+.nav-newsletter-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 6px 0;
+}
+.nav-newsletter-link:hover {
+  color: var(--ink);
+}
 .nav-switcher {
   display: inline-flex;
   align-items: center;
@@ -373,8 +386,8 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #e05a5a;
-  box-shadow: 0 0 8px #e05a5a;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
   animation: statusPulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }
