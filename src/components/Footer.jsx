@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p className="label-sm" style={{ color: 'var(--ink-faint)' }}>
-        © 2025 Lisa Demchenko. All rights reserved. — processtopixels.studio
+        © 2026 Lisa Demchenko. All rights reserved. — processtopixels.studio
       </p>
       <nav className="footer-links">
         {links.map(l =>
