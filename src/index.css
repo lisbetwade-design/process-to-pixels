@@ -568,6 +568,58 @@ body {
   .services-layout { grid-template-columns: 1fr; gap: 40px; }
 }
 
+/* ─── Work grid section ─────────────────────────────────────── */
+.work-grid-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  height: 680px;
+  overflow: hidden;
+  padding: 0 8px;
+  border-top: 1px solid var(--cream-dark);
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.work-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  will-change: transform;
+}
+
+@keyframes scroll-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes scroll-down {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+.work-col-up {
+  animation: scroll-up linear infinite;
+}
+
+.work-col-down {
+  animation: scroll-down linear infinite;
+}
+
+.work-grid-item {
+  width: 100%;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .work-grid-section {
+    grid-template-columns: repeat(2, 1fr);
+    height: 480px;
+  }
+}
+
 /* ─── Reviews section ──────────────────────────────────────── */
 .reviews-grid {
   display: grid;
@@ -782,6 +834,33 @@ body {
 
 @media (max-width: 900px) {
   .pricing-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Audit toggle ──────────────────────────────────────────── */
+.audit-toggle {
+  display: inline-flex;
+  border: 1px solid var(--cream-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.audit-toggle-btn {
+  font-family: 'Cabinet Grotesk', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: transparent;
+  color: var(--ink-faint);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.audit-toggle-btn.active {
+  background: var(--ink);
+  color: var(--cream);
 }
 
 /* ─── About section ────────────────────────────────────────── */

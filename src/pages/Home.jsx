@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import ClientCarousel from '../components/ClientCarousel'
@@ -131,6 +131,68 @@ export default function Home() {
 
       {/* ── Client Carousel ── */}
       <ClientCarousel />
+
+      {/* ── Work Grid ── */}
+      <div className="work-grid-section">
+        {[
+          {
+            dir: 'up',
+            speed: 30,
+            items: [
+              '/images/Crypto app - light mode.png',
+              '/images/Oooff.png',
+              '/images/Screening.png',
+              '/images/Board.png',
+            ],
+          },
+          {
+            dir: 'down',
+            speed: 24,
+            items: [
+              '/images/Kidzhero.png',
+              '/images/Energy Data Overview Dashboard.png',
+              '/images/Ledger.png',
+              '/images/SP app.png',
+            ],
+          },
+          {
+            dir: 'up',
+            speed: 34,
+            items: [
+              '/images/Stndby.png',
+              '/images/Portfolio bento exploration.png',
+              '/images/Peekaboost - Web design.png',
+              '/images/SF.png',
+            ],
+          },
+          {
+            dir: 'down',
+            speed: 27,
+            items: [
+              '/images/Spray path landing page.png',
+              '/images/Medical.png',
+              '/images/Modern Optics Website.png',
+              '/images/Pixelo.png',
+            ],
+          },
+        ].map((col, ci) => (
+          <div
+            key={ci}
+            className={`work-col work-col-${col.dir}`}
+            style={{ animationDuration: `${col.speed}s` }}
+          >
+            {[...col.items, ...col.items].map((src, ii) => (
+              <img
+                key={ii}
+                src={src}
+                alt=""
+                className="work-grid-item"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        ))}
+      </div>
 
       {/* ── Services ── */}
       <section id="services" className="section">
@@ -292,7 +354,7 @@ export default function Home() {
           <div className="why-stats reveal">
             {[
               { num: '6+', label: 'Years of UX design and strategy experience' },
-              { num: '30+', label: 'Products designed and shipped across 8 industries' },
+              { num: '15+', label: 'Products designed and shipped across 8 industries' },
               { num: '50%', label: 'Average increase in conversion rates and engagement' },
               { num: '8', label: 'Industry verticals: SaaS, Healthcare, Fashion, Energy, Sports, Crypto, and more' },
             ].map(s => (
@@ -319,7 +381,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pricing-grid reveal">
+        <div className="pricing-grid">
           {/* Research Sprint */}
           <div className="pricing-card">
             <p className="pricing-price">$2,499</p>
@@ -386,9 +448,33 @@ export default function Home() {
         </div>
 
         {/* Additional Services */}
-        <div className="reveal" style={{ marginTop: '64px' }}>
+        <div style={{ marginTop: '64px' }}>
           <p className="label-sm" style={{ color: 'var(--ink-faint)', marginBottom: '24px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Also available</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+
+            {/* Landing Page */}
+            <div className="pricing-card" style={{ padding: '32px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>Landing Page</h3>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                <p className="pricing-price" style={{ fontSize: '36px' }}>$2,000</p>
+                <p className="pricing-period">/ project</p>
+              </div>
+              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>10 days</p>
+              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>High-converting landing page designed to impress</p>
+              <div className="pricing-divider" />
+              {['2–3 design concepts', 'Responsive design', 'Developer-ready handoff'].map(f => (
+                <div key={f} className="pricing-feature">
+                  <span className="pricing-check">✓</span>
+                  {f}
+                </div>
+              ))}
+              <div style={{ marginTop: '28px' }}>
+                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
+                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                  Get Started →
+                </a>
+              </div>
+            </div>
 
             {/* Design Systems */}
             <div className="pricing-card" style={{ padding: '32px' }}>
@@ -415,28 +501,54 @@ export default function Home() {
             </div>
 
             {/* UX Audit */}
-            <div className="pricing-card" style={{ padding: '32px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>UX Audit</h3>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-                <p className="pricing-price" style={{ fontSize: '36px' }}>$1,299</p>
-                <p className="pricing-period">/ project</p>
-              </div>
-              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>1 – 2 weeks</p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>Expert review of your existing product experience</p>
-              <div className="pricing-divider" />
-              {['Heuristic evaluation', 'Usability issue report', 'Priority fix recommendations', 'Quick-win opportunities', 'Recorded walkthrough', 'Action plan & next steps'].map(f => (
-                <div key={f} className="pricing-feature">
-                  <span className="pricing-check">✓</span>
-                  {f}
+            {(() => {
+              const [quickAudit, setQuickAudit] = useState(false)
+              return (
+                <div className="pricing-card" style={{ padding: '32px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                    <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)' }}>UX Audit</h3>
+                    <div className="audit-toggle">
+                      <button
+                        className={`audit-toggle-btn${!quickAudit ? ' active' : ''}`}
+                        onClick={() => setQuickAudit(false)}
+                      >Full</button>
+                      <button
+                        className={`audit-toggle-btn${quickAudit ? ' active' : ''}`}
+                        onClick={() => setQuickAudit(true)}
+                      >Quick</button>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                    <p className="pricing-price" style={{ fontSize: '36px' }}>{quickAudit ? '$400' : '$1,299'}</p>
+                    <p className="pricing-period">/ project</p>
+                  </div>
+                  <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>
+                    {quickAudit ? '48 hours' : '1 – 2 weeks'}
+                  </p>
+                  <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>
+                    {quickAudit
+                      ? 'Fast, focused review of your key user flows'
+                      : 'Expert review of your existing product experience'}
+                  </p>
+                  <div className="pricing-divider" />
+                  {(quickAudit
+                    ? ['Evaluation of main user flows', 'Usability issue report', 'Prioritised suggestions', 'Delivered in 48 hours']
+                    : ['Heuristic evaluation', 'Usability issue report', 'Priority fix recommendations', 'Quick-win opportunities', 'Recorded walkthrough', 'Action plan & next steps']
+                  ).map(f => (
+                    <div key={f} className="pricing-feature">
+                      <span className="pricing-check">✓</span>
+                      {f}
+                    </div>
+                  ))}
+                  <div style={{ marginTop: '28px' }}>
+                    <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
+                      onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                      Get Started →
+                    </a>
+                  </div>
                 </div>
-              ))}
-              <div style={{ marginTop: '28px' }}>
-                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                  Get Started →
-                </a>
-              </div>
-            </div>
+              )
+            })()}
 
           </div>
         </div>
