@@ -187,7 +187,9 @@ export default function Home() {
                 src={src}
                 alt=""
                 className="work-grid-item"
-                loading="lazy"
+                width="400"
+                height="300"
+                loading={ii < 4 ? 'eager' : 'lazy'}
               />
             ))}
           </div>
