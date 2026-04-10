@@ -572,8 +572,8 @@ body {
 .work-grid-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  height: 680px;
+  gap: 16px;
+  height: 860px;
   overflow: hidden;
   padding: 0 8px;
   border-top: 1px solid var(--cream-dark);
@@ -583,7 +583,7 @@ body {
 .work-col {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   will-change: transform;
 }
 
@@ -609,12 +609,10 @@ body {
 
 .work-grid-item {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
   border-radius: 4px;
   flex-shrink: 0;
   display: block;
-  object-fit: cover;
-  background: var(--cream-dark);
 }
 
 @media (max-width: 768px) {
