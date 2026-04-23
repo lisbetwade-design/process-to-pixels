@@ -31,7 +31,7 @@ const STRUCTURED_DATA = {
       '@type': 'Person',
       '@id': 'https://processtopixels.studio/#lisa',
       name: 'Lisa Demchenko',
-      jobTitle: 'Strategic Design Partner',
+      jobTitle: 'Fractional Design Partner for Seed-Stage Startups',
       url: 'https://processtopixels.studio',
       knowsAbout: ['UX Design', 'Product Design', 'Design Systems', 'User Research', 'SaaS', 'AI-Powered Apps', 'Healthcare Tech'],
       hasCredential: { '@type': 'EducationalOccupationalCredential', description: '6+ years of UX design and strategy experience across 8+ industries' },
@@ -69,11 +69,10 @@ export default function Home() {
         <div className="hero">
           {/* Left */}
           <div className="hero-left">
-            <span className="hero-eyebrow animate-fsu anim-d1">Strategic Design Partner</span>
+            <span className="hero-eyebrow animate-fsu anim-d1">Fractional Design Partner for Seed-Stage Startups</span>
 
             <h1 className="display-xl animate-fsu anim-d2" style={{ color: 'var(--ink)' }}>
-              Strategic Product Design,{' '}
-              <em className="text-accent" style={{ fontStyle: 'italic' }}>Pixel by Pixel</em>
+              Your product is further along <span className="text-accent">than it looks.</span>
             </h1>
 
             <div className="hero-meta animate-fsu anim-d3">
@@ -92,7 +91,7 @@ export default function Home() {
             </div>
 
             <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
-              Design partner helping businesses create products users love — through research-driven strategy, end-to-end product design, and scalable design systems.
+              I bring senior design thinking to help seed-stage startups to ship faster and earn more trust from users and investors.
             </p>
 
             <div className="flex gap-4 animate-fsu anim-d5" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
