@@ -72,7 +72,7 @@ export default function Home() {
             <span className="hero-eyebrow animate-fsu anim-d1">Fractional Design Partner for Seed-Stage Startups</span>
 
             <h1 className="display-xl animate-fsu anim-d2" style={{ color: 'var(--ink)' }}>
-              Your product is further along <span className="text-accent">than it looks.</span>
+              Your product is <span className="text-accent">further along</span> than it looks.
             </h1>
 
             <div className="hero-meta animate-fsu anim-d3">
@@ -92,6 +92,9 @@ export default function Home() {
 
             <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
               I bring senior design thinking to help seed-stage startups to ship faster and earn more trust from users and investors.
+            </p>
+            <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
+              I'm comfortable working directly in your stack — prototyping in code, collaborating in your dev workflow, or shipping directly when speed matters more than process.
             </p>
 
             <div className="flex gap-4 animate-fsu anim-d5" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -211,28 +214,34 @@ export default function Home() {
           {[
             {
               title: 'UX Research & Strategy',
-              desc: 'Deep user research and strategic planning to align business goals with user needs and drive measurable ROI. Reduce risk, validate assumptions, and ensure product-market fit.',
-              result: '→ Validate before you build',
+              tagline: 'Validate before you build',
+              desc: 'You\'re making product decisions every day — often without enough signal. I help you replace assumptions with evidence so every build decision moves you forward, not sideways.',
               tags: ['User Interviews', 'Competitive Analysis', 'Roadmapping'],
             },
             {
               title: 'Product Design',
-              desc: 'End-to-end product design from concept to high-fidelity prototypes that solve real business problems. Increase conversion rates and user engagement by 30–50%.',
-              result: '→ +30–50% conversion lift',
+              tagline: 'Ship with confidence',
+              desc: 'From first wireframe to developer-ready prototype, I design products that look and feel further along than they are — and convert better because of it.',
               tags: ['Wireframing', 'Prototyping', 'Design Systems'],
             },
             {
-              title: 'Service Design',
-              desc: 'Holistic service blueprinting and journey mapping to optimize every touchpoint. Improve customer satisfaction and operational efficiency.',
-              result: '→ Optimize every touchpoint',
-              tags: ['Journey Mapping', 'Blueprints', 'Workshops'],
+              title: 'Design Systems',
+              tagline: 'Build once, scale forever',
+              desc: 'Your team is rebuilding the same components sprint after sprint. I create a design foundation that scales with your product — so engineering ships faster and the product stays consistent as it grows.',
+              tags: ['Component Library', 'Design Tokens', 'Developer Handoff'],
+            },
+            {
+              title: 'Design Engineering',
+              tagline: 'From design to code, without the gap',
+              desc: 'Most designers hand off and disappear. I stay in the loop — prototyping in code, adapting to your workflow, and implementing directly when it moves things faster. No translation layer. No sprint delays waiting on handoff.',
+              tags: ['Code Prototyping', 'Dev Collaboration', 'Figma to Code'],
             },
           ].map((s, i) => (
             <div key={s.title} className="service-card">
               <div>
-                <h3 className="display-sm" style={{ marginBottom: '12px' }}>{s.title}</h3>
+                <h3 className="display-sm" style={{ marginBottom: '8px' }}>{s.title}</h3>
+                <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', marginBottom: '12px', letterSpacing: '0.01em' }}>{s.tagline}</p>
                 <p style={{ fontSize: '15px', color: 'var(--ink-soft)', lineHeight: '1.7' }}>{s.desc}</p>
-                <p className="service-result">{s.result}</p>
                 <div className="service-tags">
                   {s.tags.map(t => <span key={t} className="tag">{t}</span>)}
                 </div>
@@ -341,6 +350,7 @@ export default function Home() {
               { icon: '⚡', title: 'Fast Execution', desc: 'Lean methodology meets design excellence — focused sprints without sacrificing quality.' },
               { icon: '◉', title: 'Real Research', desc: 'Actual user interviews, usability tests, and behavioral analysis — not assumptions.' },
               { icon: '⊘', title: 'Risk Mitigation', desc: 'Validate concepts with real users before full development to avoid costly mistakes.' },
+              { icon: '⌥', title: 'Design Engineering', desc: 'I bridge the gap between design and code — comfortable in your dev workflow, prototyping directly in the stack, and implementing when speed matters.' },
             ].map(w => (
               <div key={w.title} className="why-card">
                 <p className="why-icon">{w.icon}</p>
@@ -375,7 +385,7 @@ export default function Home() {
               Transparent <em className="text-accent" style={{ fontStyle: 'italic' }}>pricing</em>
             </h2>
             <p style={{ marginTop: '24px', fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.75' }}>
-              Flexible engagement models to match your needs and budget. All packages include project management, regular check-ins, and unlimited revisions.
+              Simple, transparent pricing. No retainers disguised as projects.
             </p>
           </div>
         </div>
@@ -386,9 +396,18 @@ export default function Home() {
             <p className="pricing-price">$2,499</p>
             <p className="pricing-period">/ project</p>
             <p className="pricing-duration">Duration: 1–2 weeks</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '20px' }}>UX Research Sprint</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '12px' }}>UX Research Sprint</h3>
+            <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.65', marginBottom: '20px' }}>
+              Not sure what to build next, or why users aren't converting? Start here. A focused sprint that replaces assumptions with evidence.
+            </p>
             <div className="pricing-divider" />
-            {['User interviews (5–8)', 'Competitive analysis', 'User personas & journey maps', 'Strategic recommendations', 'Research report & presentation'].map(f => (
+            {[
+              'Strategic recommendations',
+              'User interviews (5–8)',
+              'Competitive analysis',
+              'User personas & journey maps',
+              'Research report & presentation',
+            ].map(f => (
               <div key={f} className="pricing-feature">
                 <span className="pricing-check">✓</span>
                 {f}
@@ -397,20 +416,29 @@ export default function Home() {
             <div style={{ marginTop: '32px' }}>
               <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
                 onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Get Started →
+                Get started →
               </a>
             </div>
           </div>
 
-          {/* UX/UI Design — featured */}
+          {/* Full Product Design — featured */}
           <div className="pricing-card featured">
-            <span className="pricing-badge">Most Popular</span>
             <p className="pricing-price">$6,499</p>
             <p className="pricing-period" style={{ color: 'rgba(255,255,255,0.5)' }}>/ project</p>
             <p className="pricing-duration" style={{ color: 'rgba(255,255,255,0.3)' }}>Duration: 4–6 weeks</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '20px' }}>UX/UI Design</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Full Product Design</h3>
+            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.65', marginBottom: '20px' }}>
+              For startups that need to go from concept to a complete, developer-ready product design. Everything you need to ship with confidence.
+            </p>
             <div className="pricing-divider" style={{ background: 'rgba(255,255,255,0.08)' }} />
-            {['Everything in Research Sprint', 'Complete UX/UI design', 'Interactive prototypes', 'Usability testing rounds', 'Design system foundation', 'Developer handoff package'].map(f => (
+            {[
+              'Starts with user research',
+              'Complete UX/UI design',
+              'Interactive prototypes',
+              'Tested before handoff',
+              'Built to scale with your team',
+              'Developer handoff package',
+            ].map(f => (
               <div key={f} className="pricing-feature" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 <span className="pricing-check" style={{ color: 'var(--accent-on-dark)' }}>✓</span>
                 {f}
@@ -419,19 +447,29 @@ export default function Home() {
             <div style={{ marginTop: '32px' }}>
               <a href="#contact" className="btn btn-accent" style={{ width: '100%', justifyContent: 'center' }}
                 onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Get Started →
+                Get started →
               </a>
             </div>
           </div>
 
           {/* Design Partner */}
           <div className="pricing-card">
+            <span className="pricing-badge" style={{ background: 'var(--ink)', color: '#fff' }}>Best for ongoing work</span>
             <p className="pricing-price">$4,499</p>
             <p className="pricing-period">/ month</p>
             <p className="pricing-duration">Ongoing engagement</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '20px' }}>Design Partner</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '12px' }}>Design Partner</h3>
+            <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.65', marginBottom: '20px' }}>
+              The most effective way to work together. I embed as your dedicated design partner — proactive, available, and invested in your product long-term. No briefing overhead, no handoff gaps. Just continuous design momentum.
+            </p>
             <div className="pricing-divider" />
-            {['Ongoing UX consultation', 'Regular user testing', 'Analytics & insights', 'Flexible engagement model', 'Priority support access'].map(f => (
+            {[
+              'Embedded design thinking across every sprint',
+              'Ongoing validation with real users',
+              'Data-informed design decisions',
+              'Cancel or pause anytime',
+              'Direct access, fast turnaround',
+            ].map(f => (
               <div key={f} className="pricing-feature">
                 <span className="pricing-check">✓</span>
                 {f}
@@ -440,7 +478,7 @@ export default function Home() {
             <div style={{ marginTop: '32px' }}>
               <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
                 onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Get Started →
+                Start a conversation →
               </a>
             </div>
           </div>
@@ -459,7 +497,7 @@ export default function Home() {
                 <p className="pricing-period">/ project</p>
               </div>
               <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>10 days</p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>High-converting landing page designed to impress</p>
+              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>A high-converting landing page that makes your product look as good as it actually is.</p>
               <div className="pricing-divider" />
               {['2–3 design concepts', 'Responsive design', 'Developer-ready handoff'].map(f => (
                 <div key={f} className="pricing-feature">
@@ -483,7 +521,7 @@ export default function Home() {
                 <p className="pricing-period">/ project</p>
               </div>
               <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>8 – 12 weeks</p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>Scalable component library & documentation</p>
+              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>A scalable component library your engineering team will actually use.</p>
               <div className="pricing-divider" />
               {['Complete design system', 'Component library', 'Design tokens & guidelines', 'Accessibility standards', 'Developer documentation', 'Training & handoff'].map(f => (
                 <div key={f} className="pricing-feature">
@@ -527,7 +565,7 @@ export default function Home() {
                   <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>
                     {quickAudit
                       ? 'Fast, focused review of your key user flows'
-                      : 'Expert review of your existing product experience'}
+                      : 'Find out exactly what\'s slowing users down — and what to fix first.'}
                   </p>
                   <div className="pricing-divider" />
                   {(quickAudit
@@ -563,13 +601,19 @@ export default function Home() {
               Hey, I'm <em className="text-accent" style={{ fontStyle: 'italic' }}>Lisa</em>
             </h2>
             <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
-              A strategic design partner who believes great products start with understanding people. With over 6 years of experience in UX design and strategy, I've helped startups and established companies create products that users love and businesses grow.
+              I'm a product designer based in Brussels. Before going independent last year, I worked in-house — first at a large company, then at a startup that grew into a scale-up. That range taught me a lot about what design actually needs to do at different stages of a company's life.
             </p>
             <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
-              My approach combines rigorous user research, strategic thinking, and beautiful design to create solutions that are both functional and delightful. The best design emerges from deep understanding — of your users, your business, and your unique challenges.
+              I started as a generalist, which turned out to be the most useful thing I could have been. I learned to do the research, run the strategy, design the product, build the system, and hand it off in a way engineers could actually use. Over time, I got comfortable working directly in code too — which changes the dynamic completely. Less translation, fewer delays, more things actually shipping.
+            </p>
+            <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
+              I believe most early-stage products are further along than they look. The gap between what's been built and how it's perceived is almost always a design problem — and it's almost always fixable. That's the work I find most interesting.
+            </p>
+            <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
+              These days I also write about AI-powered design workflows for product designers — because how we work is changing fast, and I'd rather be ahead of it than catch up later.
             </p>
             <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '32px' }}>
-              When I'm not designing, you'll find me mentoring emerging designers, sharing my thoughts online, or exploring new ways to bridge the gap between design and engineering.
+              If you're building something and design feels like the missing piece, I'd like to hear about it.
             </p>
             <p className="label-sm" style={{ color: 'var(--ink-faint)', marginBottom: '12px' }}>Tools & Methods</p>
             <div className="about-tools">
