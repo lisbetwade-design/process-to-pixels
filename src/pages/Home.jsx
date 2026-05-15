@@ -454,7 +454,7 @@ export default function Home() {
 
           {/* Design Partner */}
           <div className="pricing-card">
-            <span className="pricing-badge" style={{ background: 'var(--ink)', color: '#fff' }}>Best for ongoing work</span>
+            <span className="pricing-badge" style={{ background: 'var(--green-light)', color: 'var(--ink)' }}>Best for ongoing work</span>
             <p className="pricing-price">$4,499</p>
             <p className="pricing-period">/ month</p>
             <p className="pricing-duration">Ongoing engagement</p>
