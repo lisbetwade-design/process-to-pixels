@@ -72,7 +72,7 @@ export default function Home() {
             <span className="hero-eyebrow animate-fsu anim-d1">Fractional Design Partner for Seed-Stage Startups</span>
 
             <h1 className="display-xl animate-fsu anim-d2" style={{ color: 'var(--ink)' }}>
-              Your product is <span className="text-accent">further along</span> than it looks.
+              End-to-end design and strategy for your product
             </h1>
 
             <div className="hero-meta animate-fsu anim-d3">
@@ -91,10 +91,7 @@ export default function Home() {
             </div>
 
             <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
-              I bring senior design thinking to help seed-stage startups to ship faster and earn more trust from users and investors.
-            </p>
-            <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
-              I'm comfortable working directly in your stack — prototyping in code, collaborating in your dev workflow, or shipping directly when speed matters more than process.
+              Senior design thinking and flexibility to work directly in your stack — prototyping in code, collaborating in your dev workflow, or shipping directly when speed matters more than process.
             </p>
 
             <div className="flex gap-4 animate-fsu anim-d5" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
