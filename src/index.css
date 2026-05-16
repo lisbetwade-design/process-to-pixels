@@ -127,12 +127,12 @@ body {
   white-space: nowrap;
 }
 .btn-dark {
-  background: var(--green-light);
-  color: var(--ink);
+  background: var(--accent);
+  color: #fff;
 }
 .btn-dark:hover {
-  background: var(--olive);
-  color: var(--ink);
+  background: var(--accent-light);
+  color: #fff;
 }
 .btn-outline {
   background: transparent;
@@ -319,7 +319,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--green-light);
+  background: var(--olive);
   position: relative;
   overflow: hidden;
 }
@@ -637,7 +637,7 @@ body {
   padding: 40px 36px;
 }
 .review-card.featured {
-  background: var(--green-light);
+  background: var(--olive);
   color: rgba(26,23,48,0.85);
 }
 .review-quote {
@@ -772,7 +772,7 @@ body {
   position: relative;
 }
 .pricing-card.featured {
-  background: var(--green-light);
+  background: var(--olive);
 }
 .pricing-badge {
   display: inline-block;
@@ -862,8 +862,8 @@ body {
 }
 
 .audit-toggle-btn.active {
-  background: var(--green-light);
-  color: var(--ink);
+  background: var(--accent);
+  color: #fff;
 }
 
 /* ─── About section ────────────────────────────────────────── */
@@ -879,7 +879,7 @@ body {
 }
 .about-right {
   padding: 56px;
-  background: var(--green-light);
+  background: var(--olive);
   position: relative;
   overflow: hidden;
 }
@@ -914,7 +914,7 @@ body {
 
 /* ─── CTA section ──────────────────────────────────────────── */
 .cta-section {
-  background: var(--green-light);
+  background: var(--olive);
   position: relative;
   overflow: hidden;
 }
@@ -1173,7 +1173,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 .category-items li:last-child { border-bottom: none; }
 
 .newsletter-section {
-  background: var(--green-light);
+  background: var(--olive);
   position: relative;
   overflow: hidden;
 }
