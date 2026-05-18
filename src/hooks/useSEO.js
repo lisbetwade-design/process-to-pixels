@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const SITE_URL = 'https://www.processtopixels.studio'
-const OG_IMAGE = 'https://www.processtopixels.studio/og-image.png'
+const OG_IMAGE = 'https://www.processtopixels.studio/images/og-image.png'
 
 export default function useSEO({ title, description, path = '/', structuredData }) {
   useEffect(() => {
