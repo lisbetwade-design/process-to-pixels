@@ -389,8 +389,8 @@ export default function Home() {
                 </h2>
                 <p className="profile-card-sub">Strategic Product Designer · Founder · Brussels → World</p>
                 <div className="profile-card-pills">
-                  <a href="mailto:lisa@processtopixels.studio" className="profile-card-pill">
-                    ↗ lisa@processtopixels.studio
+                  <a href="mailto:elizaveta.demchenko.ux@gmail.com" className="profile-card-pill">
+                    ↗ elizaveta.demchenko.ux@gmail.com
                   </a>
                   <a href="https://processtopixels.substack.com/" target="_blank" rel="noopener noreferrer" className="profile-card-pill">
                     ↗ substack
