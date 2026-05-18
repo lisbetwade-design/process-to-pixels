@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Nav from '../components/Nav'
+import DesignersHero from '../components/DesignersHero'
 import Footer from '../components/Footer'
-import ClientCarousel from '../components/ClientCarousel'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useSEO from '../hooks/useSEO'
 
@@ -16,6 +16,7 @@ const STRUCTURED_DATA = {
   hasPart: [
     { '@type': 'CreativeWork', name: 'The Complete Claude AI Guide for UX/UI Designers', url: 'https://pixelandprocess.gumroad.com/l/claudeguide', isAccessibleForFree: true },
     { '@type': 'CreativeWork', name: 'UX/UI AI Library', url: 'https://pixelandprocess.gumroad.com/l/aipowereddesign' },
+    { '@type': 'CreativeWork', name: 'AI-Powered UX Design Workflows Guide', url: 'https://pixelandprocess.gumroad.com/l/aipowereddesignguide' },
     { '@type': 'CreativeWork', name: 'UX/UI Learning Resources', url: 'https://pixelandprocess.gumroad.com/l/uxuiresources', isAccessibleForFree: true },
     { '@type': 'CreativeWork', name: 'User Research Question Bank', url: 'https://pixelandprocess.gumroad.com/l/uxrquestions', isAccessibleForFree: true },
     { '@type': 'CreativeWork', name: 'UX Strategy Template', url: 'https://www.figma.com/community/file/1574775956496353641/ux-strategy-template', isAccessibleForFree: true },
@@ -42,6 +43,14 @@ const RESOURCES = [
     tag: 'Toolkit',
     price: '$5',
     url: 'https://pixelandprocess.gumroad.com/l/aipowereddesign',
+  },
+  {
+    badge: 'Guide',
+    title: 'AI-Powered UX Design Workflows Guide',
+    desc: 'A practical guide to embedding AI across your UX workflow — from research synthesis and ideation to design exploration and developer handoff.',
+    tag: 'Guide',
+    price: '$15',
+    url: 'https://pixelandprocess.gumroad.com/l/aipowereddesignguide',
   },
   {
     badge: 'Notion',
@@ -90,7 +99,7 @@ const CATEGORIES = [
     num: '02',
     title: 'AI Resources',
     desc: 'Guides & toolkits for AI-powered design',
-    items: ['The Complete Claude AI Guide', 'UX/UI AI Library'],
+    items: ['The Complete Claude AI Guide', 'UX/UI AI Library', 'AI-Powered UX Design Workflows Guide'],
   },
   {
     num: '03',
@@ -122,70 +131,8 @@ export default function Designers() {
       <Nav />
 
       {/* ── Hero ── */}
-      <section style={{ borderBottom: '1px solid var(--cream-dark)' }}>
-        <div className="designers-hero">
-          {/* Left */}
-          <div className="designers-hero-left">
-            <span className="hero-eyebrow animate-fsu anim-d1">For Designers</span>
+      <DesignersHero />
 
-            <h1 className="display-xl animate-fsu anim-d2" style={{ color: 'var(--ink)', marginBottom: '28px' }}>
-              Resources to{' '}
-              <em className="text-accent" style={{ fontStyle: 'italic' }}>elevate</em>{' '}
-              your practice
-            </h1>
-
-            <p className="animate-fsu anim-d3" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
-              Free templates, frameworks, and guides from 6+ years of working across SaaS, healthcare, fashion, and beyond.
-            </p>
-
-            <div className="animate-fsu anim-d4" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '48px' }}>
-              <a href="#resources" className="btn btn-dark"
-                onClick={e => { e.preventDefault(); document.getElementById('resources')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Browse Resources
-              </a>
-              <a href="#newsletter" className="btn btn-outline"
-                onClick={e => { e.preventDefault(); document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Join Newsletter
-              </a>
-            </div>
-
-            <div className="animate-fsu anim-d5" style={{ display: 'flex', gap: '0', border: '1px solid var(--cream-dark)' }}>
-              {[
-                { label: 'Resources', value: '6' },
-                { label: 'Format', value: 'Free' },
-                { label: 'Updates', value: 'Monthly' },
-              ].map((m, i) => (
-                <div key={m.label} style={{
-                  flex: 1, padding: '16px 20px',
-                  borderRight: i < 2 ? '1px solid var(--cream-dark)' : 'none',
-                }}>
-                  <p style={{ fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--ink-faint)', marginBottom: '4px' }}>{m.label}</p>
-                  <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--ink)' }}>{m.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — feature cards */}
-          <div className="designers-hero-right" style={{ background: 'var(--cream-dark)', padding: '56px' }}>
-            {regularResources.slice(0, 3).map((r, i) => (
-              <div key={r.title} className="animate-fsu" style={{
-                animationDelay: `${0.2 + i * 0.15}s`,
-                opacity: 0,
-                background: 'var(--cream)',
-                padding: '28px 28px',
-                border: '1px solid var(--cream-dark)',
-                cursor: 'pointer',
-                transition: 'background 0.2s',
-              }}>
-                <span className={`resource-badge ${r.badgeClass || ''}`}>{r.badge}</span>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>{r.title}</h3>
-                <p style={{ fontSize: '13px', color: 'var(--ink-soft)', lineHeight: '1.65' }}>{r.desc.slice(0, 80)}…</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Format strip ── */}
       <div className="format-strip">
@@ -198,11 +145,10 @@ export default function Designers() {
       </div>
 
       {/* ── Resources ── */}
-      <section id="resources" className="section">
-        <p className="section-marker reveal" style={{ marginBottom: '16px' }}>Resources</p>
+      <section id="resources" className="section" style={{ background: '#D9E2BD' }}>
         <h2 className="display-lg reveal" style={{ color: 'var(--ink)', marginBottom: '0' }}>
           Everything you need to{' '}
-          <em className="text-accent" style={{ fontStyle: 'italic' }}>grow</em>
+          <em className="text-accent" style={{ fontStyle: 'normal' }}>grow</em>
         </h2>
 
         <div className="resources-grid reveal">
@@ -223,7 +169,7 @@ export default function Designers() {
                   <span className="resource-badge free" style={{ margin: 0 }}>Featured</span>
                   <span className="resource-badge free" style={{ margin: 0 }}>{featuredResource.price}</span>
                 </div>
-                <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: '28px', fontWeight: 700, color: 'var(--ink)', marginBottom: '16px' }}>
+                <h3 style={{ fontFamily: '"Boldonse", "Playfair Display", Georgia, serif', fontSize: '22px', fontWeight: 400, color: 'var(--ink)', marginBottom: '16px' }}>
                   {featuredResource.title}
                 </h3>
                 <p style={{ fontSize: '15px', color: 'var(--ink-soft)', lineHeight: '1.75' }}>{featuredResource.desc}</p>
@@ -273,9 +219,8 @@ export default function Designers() {
 
       {/* ── Categories ── */}
       <section id="categories" className="section" style={{ paddingTop: 0 }}>
-        <p className="section-marker reveal">Categories</p>
         <h2 className="display-lg reveal" style={{ color: 'var(--ink)' }}>
-          Browse by <em className="text-accent" style={{ fontStyle: 'italic' }}>topic</em>
+          Browse by <em className="text-accent" style={{ fontStyle: 'normal' }}>topic</em>
         </h2>
 
         <div className="categories-grid reveal">
@@ -300,23 +245,23 @@ export default function Designers() {
       </section>
 
       {/* ── Newsletter ── */}
-      <section id="newsletter" className="section newsletter-section ghost-grid" style={{ position: 'relative' }}>
+      <section id="newsletter" className="section newsletter-section ghost-grid" style={{ position: 'relative', background: '#D9E2BD' }}>
         <div style={{ maxWidth: '640px', position: 'relative', zIndex: 1 }}>
-          <p className="label-sm reveal" style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '20px' }}>
+          <p className="label-sm reveal" style={{ color: 'var(--ink-faint)', marginBottom: '20px' }}>
             Newsletter
           </p>
-          <h2 className="display-lg reveal" style={{ color: '#fff' }}>
+          <h2 className="display-lg reveal" style={{ color: 'var(--ink)' }}>
             Design insights,{' '}
-            <em className="text-accent-on-dark" style={{ fontStyle: 'italic' }}>monthly</em>
+            <em className="text-accent" style={{ fontStyle: 'normal' }}>monthly</em>
           </h2>
-          <p className="reveal" style={{ marginTop: '20px', fontSize: '16px', color: 'rgba(255,255,255,0.5)', lineHeight: '1.8', marginBottom: '0' }}>
+          <p className="reveal" style={{ marginTop: '20px', fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '0' }}>
             Practical UX tips, career advice, new resources, and honest reflections from working in design for 6+ years. No spam, ever.
           </p>
 
           <form className="reveal" onSubmit={e => e.preventDefault()} style={{ marginTop: '32px' }}>
             <div className="nl-form">
-              <input type="email" className="nl-input" placeholder="your@email.com" />
-              <input type="text" className="nl-input" placeholder="First Name" />
+              <input type="email" className="nl-input" style={{ background: 'rgba(26,23,48,.04)', border: '1px solid rgba(26,23,48,.15)', color: 'var(--ink)' }} placeholder="your@email.com" />
+              <input type="text" className="nl-input" style={{ background: 'rgba(26,23,48,.04)', border: '1px solid rgba(26,23,48,.15)', color: 'var(--ink)' }} placeholder="First Name" />
             </div>
             <div style={{ marginTop: '12px' }}>
               <button type="submit" className="btn btn-accent" style={{ color: '#fff' }}>
@@ -325,7 +270,7 @@ export default function Designers() {
             </div>
           </form>
 
-          <p className="reveal" style={{ marginTop: '20px', fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
+          <p className="reveal" style={{ marginTop: '20px', fontSize: '12px', color: 'var(--ink-faint)' }}>
             Join 500+ designers. Unsubscribe anytime.
           </p>
         </div>

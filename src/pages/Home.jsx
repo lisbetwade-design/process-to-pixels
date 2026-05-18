@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Nav from '../components/Nav'
+import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import ClientCarousel from '../components/ClientCarousel'
 import useScrollReveal from '../hooks/useScrollReveal'
@@ -13,17 +14,17 @@ const STRUCTURED_DATA = {
       '@id': 'https://processtopixels.studio/#business',
       name: 'Process to Pixels',
       url: 'https://processtopixels.studio',
-      description: 'Strategic product design studio offering UX research, product design, design systems, and service design.',
+      description: 'Strategic product design studio offering UX research, product design, and design partnerships.',
       founder: { '@type': 'Person', name: 'Lisa Demchenko' },
       areaServed: 'Worldwide',
-      knowsAbout: ['UX Research', 'Product Design', 'Design Systems', 'Service Design', 'AI-Powered Design'],
+      knowsAbout: ['UX Research', 'Product Design', 'Design Systems', 'AI-Powered Design'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Design Services',
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'UX Research & Strategy', description: 'Deep user research and strategic planning to align business goals with user needs.', price: '2499', priceCurrency: 'USD' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Product Design', description: 'End-to-end product design from concept to high-fidelity prototypes.', price: '6499', priceCurrency: 'USD' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design Partner', description: 'Ongoing UX consultation and design partnership.', price: '4499', priceCurrency: 'USD' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Product Design', description: 'End-to-end product design from concept to high-fidelity prototypes.', price: '7499', priceCurrency: 'USD' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design Partner', description: 'Ongoing UX consultation and design partnership.', price: '4999', priceCurrency: 'USD' } },
         ],
       },
     },
@@ -65,68 +66,7 @@ export default function Home() {
       <Nav />
 
       {/* ── Hero ── */}
-      <section style={{ borderBottom: '1px solid var(--cream-dark)' }}>
-        <div className="hero">
-          {/* Left */}
-          <div className="hero-left">
-            <span className="hero-eyebrow animate-fsu anim-d1">Fractional Design Partner for Seed-Stage Startups</span>
-
-            <h1 className="display-xl animate-fsu anim-d2" style={{ color: 'var(--ink)' }}>
-              End-to-end design and strategy for your product
-            </h1>
-
-            <div className="hero-meta animate-fsu anim-d3">
-              <div className="hero-meta-item">
-                <p className="hero-meta-label">Services</p>
-                <p className="hero-meta-value">UX / Product / Systems</p>
-              </div>
-              <div className="hero-meta-item">
-                <p className="hero-meta-label">Experience</p>
-                <p className="hero-meta-value">6+ Years</p>
-              </div>
-              <div className="hero-meta-item">
-                <p className="hero-meta-label">Availability</p>
-                <p className="hero-meta-value accent">Q2 2026</p>
-              </div>
-            </div>
-
-            <p className="animate-fsu anim-d4" style={{ fontSize: '17px', color: 'var(--ink-mid)', lineHeight: '1.75', maxWidth: '480px', marginBottom: '40px' }}>
-              Senior design thinking and flexibility to work directly in your stack — prototyping in code, collaborating in your dev workflow, or shipping directly when speed matters more than process.
-            </p>
-
-            <div className="flex gap-4 animate-fsu anim-d5" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <a href="https://cal.com/elizaveta-demchenko-oz4d4o/15min" target="_blank" rel="noopener noreferrer" className="btn btn-dark">
-                Book a 15 min call
-              </a>
-              <a href="#services" className="btn btn-outline" onClick={e => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                View Services
-              </a>
-            </div>
-          </div>
-
-          {/* Right */}
-          <div className="hero-right ghost-grid">
-            <div className="status-pill animate-fsu anim-d1">
-              <span className="status-dot" />
-              1 Spot Available for Q2
-            </div>
-
-            <ul className="hero-service-list animate-fsu anim-d2">
-              {['UX Research & Strategy', 'Product Design', 'Design Systems', 'Service Design'].map((s, i) => (
-                <li key={s} className="hero-service-item">
-                  <span className="hero-service-num">0{i + 1}</span>
-                  {s}
-                </li>
-              ))}
-            </ul>
-
-            <p className="hero-credit animate-fsu anim-d4">
-              Your design partner —{' '}
-              <span>Lisa Demchenko</span>
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* ── Client Carousel ── */}
       <ClientCarousel />
@@ -194,66 +134,118 @@ export default function Home() {
       </div>
 
       {/* ── Services ── */}
-      <section id="services" className="section">
+      <section id="services" className="section" style={{ background: '#D9E2BD' }}>
         <div className="section-header reveal">
           <div>
-            <p className="section-marker">Services 01 / 04</p>
             <h2 className="display-lg" style={{ color: 'var(--ink)' }}>
-              How I can <em className="text-accent" style={{ fontStyle: 'italic' }}>help</em>
+              How I can <em className="text-accent" style={{ fontStyle: 'normal' }}>help</em>
             </h2>
           </div>
           <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.75', maxWidth: '360px', alignSelf: 'flex-end' }}>
-            Strategic design services that bridge the gap between user needs and business objectives.
+            Strategic design, research and design engineering.
           </p>
         </div>
 
-        <div className="services-grid reveal">
+        <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {[
             {
               title: 'UX Research & Strategy',
-              tagline: 'Validate before you build',
-              desc: 'You\'re making product decisions every day — often without enough signal. I help you replace assumptions with evidence so every build decision moves you forward, not sideways.',
-              tags: ['User Interviews', 'Competitive Analysis', 'Roadmapping'],
+              desc: "You're making product decisions every day — often without enough signal. I help you replace assumptions with evidence so every build decision moves you forward, not sideways.",
+              features: ['User interviews (5–8)', 'Competitive analysis', 'User personas & journey maps', 'Strategic recommendations', 'Research report & presentation'],
+              promise: 'Validate before you build',
+              price: '$2,499',
+              duration: '1–2 wks',
             },
             {
               title: 'Product Design',
-              tagline: 'Ship with confidence',
-              desc: 'From first wireframe to developer-ready prototype, I design products that look and feel further along than they are — and convert better because of it.',
-              tags: ['Wireframing', 'Prototyping', 'Design Systems'],
+              desc: 'From first wireframe to developer-ready prototype — and into code when it moves things faster. I design products that look and feel further along than they are, and convert better because of it. No translation layer between design and dev.',
+              features: ['Starts with user research', 'Complete UX/UI design', 'Interactive prototypes', 'Code prototyping when speed matters', 'Tested before handoff', 'Figma-to-code developer handoff'],
+              promise: '+30—50% conversion & engagement',
+              price: '$7,499',
+              duration: '4–6 wks',
+            },
+            {
+              title: 'Design Partner',
+              desc: 'I embed as your dedicated design partner — proactive, available, and invested in your product long-term. Comfortable in Figma or your dev workflow, prototyping in code or shipping directly when speed matters. No briefing overhead, no handoff gaps.',
+              features: ['Embedded across every sprint', 'Prototyping in code, in your stack', 'Ongoing user validation', 'Data-informed decisions', 'Cancel or pause anytime', 'Direct access, fast turnaround'],
+              promise: 'A senior designer (and engineer) on call',
+              price: '$4,999',
+              duration: 'per month',
+              featured: true,
             },
             {
               title: 'Design Systems',
-              tagline: 'Build once, scale forever',
               desc: 'Your team is rebuilding the same components sprint after sprint. I create a design foundation that scales with your product — so engineering ships faster and the product stays consistent as it grows.',
-              tags: ['Component Library', 'Design Tokens', 'Developer Handoff'],
+              features: ['Complete design system', 'Component library', 'Design tokens & guidelines', 'Accessibility standards', 'Developer documentation', 'Training & handoff'],
+              promise: 'Build once, scale forever',
+              price: '$3,499',
+              duration: '8–12 wks',
             },
             {
-              title: 'Design Engineering',
-              tagline: 'From design to code, without the gap',
-              desc: 'Most designers hand off and disappear. I stay in the loop — prototyping in code, adapting to your workflow, and implementing directly when it moves things faster. No translation layer. No sprint delays waiting on handoff.',
-              tags: ['Code Prototyping', 'Dev Collaboration', 'Figma to Code'],
+              title: 'UX Audit',
+              desc: "Find out exactly what's slowing users down — and what to fix first.",
+              features: ['Heuristic evaluation', 'Usability issue report', 'Priority fix recommendations', 'Quick-win opportunities', 'Recorded walkthrough', 'Action plan & next steps'],
+              promise: 'Fix the friction before scaling',
+              price: 'Custom',
+              duration: 'starting $400',
             },
-          ].map((s, i) => (
-            <div key={s.title} className="service-card">
+          ].map((s) => (
+            <article key={s.title} style={{ background: '#fff', borderRadius: '20px', padding: '40px 48px', boxShadow: '0 1px 3px rgba(26,23,48,.05), 0 8px 24px rgba(26,23,48,.04)', display: 'grid', gridTemplateColumns: '1fr 220px', gap: '48px', alignItems: 'stretch' }}>
               <div>
-                <h3 className="display-sm" style={{ marginBottom: '8px' }}>{s.title}</h3>
-                <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--accent)', marginBottom: '12px', letterSpacing: '0.01em' }}>{s.tagline}</p>
-                <p style={{ fontSize: '15px', color: 'var(--ink-soft)', lineHeight: '1.7' }}>{s.desc}</p>
-                <div className="service-tags">
-                  {s.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                {s.featured && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '999px', background: 'var(--olive)', color: 'var(--ink)', letterSpacing: '0.01em' }}>
+                      ★ Most picked
+                    </span>
+                  </div>
+                )}
+
+                <h3 className="display-md" style={{ margin: '0 0 14px', color: 'var(--ink)' }}>
+                  {s.title}<span style={{ color: 'var(--accent)' }}>.</span>
+                </h3>
+
+                <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: 1.6, maxWidth: '680px', marginBottom: '28px' }}>
+                  {s.desc}
+                </p>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px 36px', marginBottom: '28px', maxWidth: '680px' }}>
+                  {s.features.map((f) => (
+                    <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '14px', color: 'var(--ink)' }}>
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', marginTop: '8px', flexShrink: 0 }} />
+                      {f}
+                    </div>
+                  ))}
                 </div>
+
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '9px 16px', borderRadius: '999px', background: '#EEEEE5', fontSize: '14px', fontWeight: 500, color: 'var(--ink)' }}>
+                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
+                  {s.promise}
+                </span>
               </div>
-              <span className="service-num">{String(i + 1).padStart(2, '0')}</span>
-            </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px' }}>
+                <div style={{ textAlign: 'right' }}>
+                  <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-faint)', marginBottom: '10px', margin: '0 0 10px' }}>Fixed Fee</p>
+                  <p className="display-md" style={{ margin: 0, lineHeight: 1, color: 'var(--ink)' }}>{s.price}</p>
+                  <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginTop: '8px' }}>{s.duration}</p>
+                </div>
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+                  style={{ textDecoration: 'none', background: 'var(--ink)', color: '#fff', padding: '14px 20px', borderRadius: '12px', fontSize: '14px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px', whiteSpace: 'nowrap' }}
+                >
+                  Start this →
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
       {/* ── Reviews ── */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <p className="section-marker reveal" style={{ marginBottom: '16px' }}>Client Reviews</p>
         <h2 className="display-lg reveal" style={{ color: 'var(--ink)' }}>
-          Trusted by founders <em className="text-accent" style={{ fontStyle: 'italic' }}>& leaders</em>
+          Trusted by founders <em className="text-accent" style={{ fontStyle: 'normal' }}>& leaders</em>
         </h2>
 
         <div className="reviews-grid">
@@ -285,12 +277,11 @@ export default function Home() {
       </section>
 
       {/* ── Process ── */}
-      <section id="process" className="section" style={{ paddingTop: 0 }}>
+      <section id="process" className="section" style={{ paddingTop: 0, paddingBottom: '56px' }}>
         <div className="section-header reveal">
           <div>
-            <p className="section-marker">Process 02 / 04</p>
             <h2 className="display-lg" style={{ color: 'var(--ink)' }}>
-              How I <em className="text-accent" style={{ fontStyle: 'italic' }}>work</em>
+              How I <em className="text-accent" style={{ fontStyle: 'normal' }}>work</em>
             </h2>
           </div>
           <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.75', maxWidth: '360px', alignSelf: 'flex-end' }}>
@@ -332,9 +323,8 @@ export default function Home() {
 
       {/* ── Why Choose Me ── */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <p className="section-marker reveal">Why Choose Me 03 / 04</p>
         <h2 className="display-lg reveal" style={{ color: 'var(--ink)' }}>
-          More than just a <em className="text-accent" style={{ fontStyle: 'italic' }}>designer</em>
+          More than just a <em className="text-accent" style={{ fontStyle: 'normal' }}>designer</em>
         </h2>
         <p className="reveal" style={{ marginTop: '16px', fontSize: '16px', color: 'var(--ink-soft)', maxWidth: '560px' }}>
           A strategic partner who understands that great UX is about business impact, not just aesthetics.
@@ -357,245 +347,16 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="why-stats reveal">
-            {[
-              { num: '6+', label: 'Years of UX design and strategy experience' },
-              { num: '15+', label: 'Products designed and shipped across 8 industries' },
-              { num: '50%', label: 'Average increase in conversion rates and engagement' },
-              { num: '8', label: 'Industry verticals: SaaS, Healthcare, Fashion, Energy, Sports, Crypto, and more' },
-            ].map(s => (
-              <div key={s.num} className="stat-item">
-                <p className="stat-num">{s.num}</p>
-                <p className="stat-label">{s.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ── Pricing ── */}
-      <section id="pricing" className="section" style={{ paddingTop: 0 }}>
-        <p className="section-marker reveal">Pricing 04 / 04</p>
-        <div className="services-layout" style={{ alignItems: 'end' }}>
-          <div className="reveal">
-            <h2 className="display-lg" style={{ color: 'var(--ink)' }}>
-              Transparent <em className="text-accent" style={{ fontStyle: 'italic' }}>pricing</em>
-            </h2>
-            <p style={{ marginTop: '24px', fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.75' }}>
-              Simple, transparent pricing. No retainers disguised as projects.
-            </p>
-          </div>
-        </div>
-
-        <div className="pricing-grid">
-          {/* Research Sprint */}
-          <div className="pricing-card">
-            <p className="pricing-price">$2,499</p>
-            <p className="pricing-period">/ project</p>
-            <p className="pricing-duration">Duration: 1–2 weeks</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '12px' }}>UX Research Sprint</h3>
-            <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.65', marginBottom: '20px' }}>
-              Not sure what to build next, or why users aren't converting? Start here. A focused sprint that replaces assumptions with evidence.
-            </p>
-            <div className="pricing-divider" />
-            {[
-              'Strategic recommendations',
-              'User interviews (5–8)',
-              'Competitive analysis',
-              'User personas & journey maps',
-              'Research report & presentation',
-            ].map(f => (
-              <div key={f} className="pricing-feature">
-                <span className="pricing-check">✓</span>
-                {f}
-              </div>
-            ))}
-            <div style={{ marginTop: '32px' }}>
-              <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Get started →
-              </a>
-            </div>
-          </div>
-
-          {/* Full Product Design — featured */}
-          <div className="pricing-card featured">
-            <p className="pricing-price">$6,499</p>
-            <p className="pricing-period" style={{ color: 'rgba(255,255,255,0.5)' }}>/ project</p>
-            <p className="pricing-duration" style={{ color: 'rgba(255,255,255,0.3)' }}>Duration: 4–6 weeks</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>Full Product Design</h3>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.65', marginBottom: '20px' }}>
-              For startups that need to go from concept to a complete, developer-ready product design. Everything you need to ship with confidence.
-            </p>
-            <div className="pricing-divider" style={{ background: 'rgba(255,255,255,0.08)' }} />
-            {[
-              'Starts with user research',
-              'Complete UX/UI design',
-              'Interactive prototypes',
-              'Tested before handoff',
-              'Built to scale with your team',
-              'Developer handoff package',
-            ].map(f => (
-              <div key={f} className="pricing-feature" style={{ color: 'rgba(255,255,255,0.7)' }}>
-                <span className="pricing-check" style={{ color: 'var(--accent-on-dark)' }}>✓</span>
-                {f}
-              </div>
-            ))}
-            <div style={{ marginTop: '32px' }}>
-              <a href="#contact" className="btn btn-accent" style={{ width: '100%', justifyContent: 'center' }}
-                onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Get started →
-              </a>
-            </div>
-          </div>
-
-          {/* Design Partner */}
-          <div className="pricing-card">
-            <span className="pricing-badge" style={{ background: 'var(--accent)', color: '#fff', borderColor: 'var(--accent)' }}>Best for ongoing work</span>
-            <p className="pricing-price">$4,499</p>
-            <p className="pricing-period">/ month</p>
-            <p className="pricing-duration">Ongoing engagement</p>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '12px' }}>Design Partner</h3>
-            <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.65', marginBottom: '20px' }}>
-              The most effective way to work together. I embed as your dedicated design partner — proactive, available, and invested in your product long-term. No briefing overhead, no handoff gaps. Just continuous design momentum.
-            </p>
-            <div className="pricing-divider" />
-            {[
-              'Embedded design thinking across every sprint',
-              'Ongoing validation with real users',
-              'Data-informed design decisions',
-              'Cancel or pause anytime',
-              'Direct access, fast turnaround',
-            ].map(f => (
-              <div key={f} className="pricing-feature">
-                <span className="pricing-check">✓</span>
-                {f}
-              </div>
-            ))}
-            <div style={{ marginTop: '32px' }}>
-              <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                Start a conversation →
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Additional Services */}
-        <div style={{ marginTop: '64px' }}>
-          <p className="label-sm" style={{ color: 'var(--ink-faint)', marginBottom: '24px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Also available</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-
-            {/* Landing Page */}
-            <div className="pricing-card" style={{ padding: '32px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>Landing Page</h3>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-                <p className="pricing-price" style={{ fontSize: '36px' }}>$2,000</p>
-                <p className="pricing-period">/ project</p>
-              </div>
-              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>10 days</p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>A high-converting landing page that makes your product look as good as it actually is.</p>
-              <div className="pricing-divider" />
-              {['2–3 design concepts', 'Responsive design', 'Developer-ready handoff'].map(f => (
-                <div key={f} className="pricing-feature">
-                  <span className="pricing-check">✓</span>
-                  {f}
-                </div>
-              ))}
-              <div style={{ marginTop: '28px' }}>
-                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                  Get Started →
-                </a>
-              </div>
-            </div>
-
-            {/* Design Systems */}
-            <div className="pricing-card" style={{ padding: '32px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>Design Systems</h3>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-                <p className="pricing-price" style={{ fontSize: '36px' }}>$3,499</p>
-                <p className="pricing-period">/ project</p>
-              </div>
-              <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>8 – 12 weeks</p>
-              <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>A scalable component library your engineering team will actually use.</p>
-              <div className="pricing-divider" />
-              {['Complete design system', 'Component library', 'Design tokens & guidelines', 'Accessibility standards', 'Developer documentation', 'Training & handoff'].map(f => (
-                <div key={f} className="pricing-feature">
-                  <span className="pricing-check">✓</span>
-                  {f}
-                </div>
-              ))}
-              <div style={{ marginTop: '28px' }}>
-                <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                  onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                  Get Started →
-                </a>
-              </div>
-            </div>
-
-            {/* UX Audit */}
-            {(() => {
-              const [quickAudit, setQuickAudit] = useState(false)
-              return (
-                <div className="pricing-card" style={{ padding: '32px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                    <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)' }}>UX Audit</h3>
-                    <div className="audit-toggle">
-                      <button
-                        className={`audit-toggle-btn${!quickAudit ? ' active' : ''}`}
-                        onClick={() => setQuickAudit(false)}
-                      >Full</button>
-                      <button
-                        className={`audit-toggle-btn${quickAudit ? ' active' : ''}`}
-                        onClick={() => setQuickAudit(true)}
-                      >Quick</button>
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-                    <p className="pricing-price" style={{ fontSize: '36px' }}>{quickAudit ? '$400' : '$1,299'}</p>
-                    <p className="pricing-period">/ project</p>
-                  </div>
-                  <p style={{ fontSize: '13px', color: 'var(--ink-faint)', marginBottom: '20px' }}>
-                    {quickAudit ? '48 hours' : '1 – 2 weeks'}
-                  </p>
-                  <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: '1.6', marginBottom: '20px' }}>
-                    {quickAudit
-                      ? 'Fast, focused review of your key user flows'
-                      : 'Find out exactly what\'s slowing users down — and what to fix first.'}
-                  </p>
-                  <div className="pricing-divider" />
-                  {(quickAudit
-                    ? ['Evaluation of main user flows', 'Usability issue report', 'Prioritised suggestions', 'Delivered in 48 hours']
-                    : ['Heuristic evaluation', 'Usability issue report', 'Priority fix recommendations', 'Quick-win opportunities', 'Recorded walkthrough', 'Action plan & next steps']
-                  ).map(f => (
-                    <div key={f} className="pricing-feature">
-                      <span className="pricing-check">✓</span>
-                      {f}
-                    </div>
-                  ))}
-                  <div style={{ marginTop: '28px' }}>
-                    <a href="#contact" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}
-                      onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                      Get Started →
-                    </a>
-                  </div>
-                </div>
-              )
-            })()}
-
-          </div>
-        </div>
-      </section>
 
       {/* ── About ── */}
       <section id="about" className="section" style={{ paddingTop: 0 }}>
-        <p className="section-marker reveal">About</p>
-
         <div className="about-layout reveal">
           <div className="about-left">
             <h2 className="display-lg" style={{ color: 'var(--ink)', marginBottom: '28px' }}>
-              Hey, I'm <em className="text-accent" style={{ fontStyle: 'italic' }}>Lisa</em>
+              Hey, I'm <em className="text-accent" style={{ fontStyle: 'normal' }}>Lisa</em>
             </h2>
             <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
               I'm a product designer based in Brussels. Before going independent last year, I worked in-house — first at a large company, then at a startup that grew into a scale-up. That range taught me a lot about what design actually needs to do at different stages of a company's life.
@@ -624,13 +385,13 @@ export default function Home() {
             <div>
               <p className="about-right-label" style={{ marginBottom: '16px' }}>Industry Experience</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '40px' }}>
-                {['SaaS & B2B Tech', 'Healthcare Tech', 'Fashion Tech', 'Energy Tech', 'Sports', 'Crypto', 'HR', 'Gen AI', 'AI Powered Apps'].map(ind => (
+                {['SaaS & B2B Tech', 'Healthcare Tech', 'Fashion Tech', 'Energy Tech', 'Sports', 'Crypto', 'HR', 'Gen AI', 'AI Powered Apps', 'Personal Apps'].map(ind => (
                   <span key={ind} style={{
                     fontSize: '12px',
                     padding: '5px 12px',
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    color: 'rgba(255,255,255,0.6)',
-                    borderRadius: '2px',
+                    border: '1px solid rgba(26,23,48,0.25)',
+                    color: 'var(--ink)',
+                    borderRadius: '999px',
                   }}>{ind}</span>
                 ))}
               </div>
@@ -648,63 +409,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── CTA ── */}
-      <section id="contact" className="section cta-section">
-        <div className="cta-layout">
-          <div className="reveal">
-            <p className="label-sm" style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '20px' }}>
-              Let's work together
-            </p>
-            <h2 className="display-lg" style={{ color: '#fff' }}>
-              Ready to create something{' '}
-              <em className="text-accent-on-dark" style={{ fontStyle: 'italic' }}>great?</em>
-            </h2>
-            <p style={{ marginTop: '24px', fontSize: '16px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.8', maxWidth: '440px' }}>
-              Book a free 15-minute discovery call to discuss your project. No commitment, no sales pitch — just an honest conversation about how I can help.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '40px' }}>
-              <a href="https://cal.com/elizaveta-demchenko-oz4d4o/15min" target="_blank" rel="noopener noreferrer" className="btn btn-light">Book a 15 min call</a>
-              <button className="btn btn-outline" style={{ color: 'rgba(255,255,255,0.6)', borderColor: 'rgba(255,255,255,0.15)' }}>
-                Send an Email
-              </button>
-            </div>
-            <div className="cta-meta">
-              {[
-                { label: 'Response', value: '6–24h' },
-                { label: 'First Call', value: 'Free' },
-                { label: 'Sales Pressure', value: 'Zero' },
-              ].map(m => (
-                <div key={m.label} className="cta-meta-item">
-                  <p className="cta-meta-label">{m.label}</p>
-                  <p className="cta-meta-value">{m.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="reveal">
-            <form onSubmit={e => e.preventDefault()}>
-              <div className="form-field">
-                <label className="form-label">Your Name</label>
-                <input type="text" className="form-input" placeholder="Lisa Demchenko" />
-              </div>
-              <div className="form-field">
-                <label className="form-label">Email Address</label>
-                <input type="email" className="form-input" placeholder="you@company.com" />
-              </div>
-              <div className="form-field">
-                <label className="form-label">Tell me about your project</label>
-                <textarea className="form-input" placeholder="Brief description of your project..." />
-              </div>
-              <button type="submit" className="btn btn-light" style={{ width: '100%', justifyContent: 'center' }}>
-                Send Message →
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </>
   )
