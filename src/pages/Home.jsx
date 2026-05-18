@@ -146,7 +146,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {[
             {
               title: 'UX Research & Strategy',
@@ -189,8 +189,8 @@ export default function Home() {
               price: 'Custom',
               duration: 'starting $400',
             },
-          ].map((s) => (
-            <article key={s.title} style={{ background: '#fff', borderRadius: '20px', padding: '40px 48px', boxShadow: '0 1px 3px rgba(26,23,48,.05), 0 8px 24px rgba(26,23,48,.04)', display: 'grid', gridTemplateColumns: '1fr 220px', gap: '48px', alignItems: 'stretch' }}>
+          ].map((s, i) => (
+            <article key={s.title} className="reveal service-parallax" style={{ '--reveal-delay': `${i * 90}ms`, background: '#fff', borderRadius: '20px', padding: '40px 48px', boxShadow: '0 1px 3px rgba(26,23,48,.05), 0 8px 24px rgba(26,23,48,.04)', display: 'grid', gridTemplateColumns: '1fr 220px', gap: '48px', alignItems: 'stretch' }}>
               <div>
                 {s.featured && (
                   <div style={{ marginBottom: '20px' }}>
@@ -355,9 +355,6 @@ export default function Home() {
       <section id="about" className="section" style={{ paddingTop: 0 }}>
         <div className="about-layout reveal">
           <div className="about-left">
-            <h2 className="display-lg" style={{ color: 'var(--ink)', marginBottom: '28px' }}>
-              Hey, I'm <em className="text-accent" style={{ fontStyle: 'normal' }}>Lisa</em>
-            </h2>
             <p style={{ fontSize: '16px', color: 'var(--ink-soft)', lineHeight: '1.8', marginBottom: '20px' }}>
               I'm a product designer based in Brussels. Before going independent last year, I worked in-house — first at a large company, then at a startup that grew into a scale-up. That range taught me a lot about what design actually needs to do at different stages of a company's life.
             </p>
@@ -381,31 +378,30 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="about-right ghost-grid">
-            <div>
-              <p className="about-right-label" style={{ marginBottom: '16px' }}>Industry Experience</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '40px' }}>
-                {['SaaS & B2B Tech', 'Healthcare Tech', 'Fashion Tech', 'Energy Tech', 'Sports', 'Crypto', 'HR', 'Gen AI', 'AI Powered Apps', 'Personal Apps'].map(ind => (
-                  <span key={ind} style={{
-                    fontSize: '12px',
-                    padding: '5px 12px',
-                    border: '1px solid rgba(26,23,48,0.25)',
-                    color: 'var(--ink)',
-                    borderRadius: '999px',
-                  }}>{ind}</span>
-                ))}
+          <div className="about-right">
+            <div className="profile-card">
+              <div className="profile-card-image">
+                <img src="/images/profile.png" alt="Lisa Demchenko" />
+              </div>
+              <div className="profile-card-body">
+                <h2 className="display-lg profile-card-name" style={{ color: 'var(--ink)' }}>
+                  Hey, I'm <em className="text-accent" style={{ fontStyle: 'normal' }}>Lisa</em>
+                </h2>
+                <p className="profile-card-sub">Strategic Product Designer · Founder · Brussels → World</p>
+                <div className="profile-card-pills">
+                  <a href="mailto:lisa@processtopixels.studio" className="profile-card-pill">
+                    ↗ lisa@processtopixels.studio
+                  </a>
+                  <a href="https://processtopixels.substack.com/" target="_blank" rel="noopener noreferrer" className="profile-card-pill">
+                    ↗ substack
+                  </a>
+                  <a href="https://cal.com/elizaveta-demchenko-oz4d4o/15min" target="_blank" rel="noopener noreferrer" className="profile-card-pill">
+                    ↗ book a call
+                  </a>
+                </div>
               </div>
             </div>
-            {[
-              { label: 'Response Time', value: '6–24 hours' },
-              { label: 'Initial Consultation', value: 'Free, no pressure' },
-              { label: 'Next Availability', value: 'Q2 2026' },
-            ].map(item => (
-              <div key={item.label} className="about-right-item">
-                <p className="about-right-label">{item.label}</p>
-                <p className="about-right-value">{item.value}</p>
-              </div>
-            ))}
+
           </div>
         </div>
       </section>

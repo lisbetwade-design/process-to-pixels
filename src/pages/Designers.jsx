@@ -245,7 +245,7 @@ export default function Designers() {
       </section>
 
       {/* ── Newsletter ── */}
-      <section id="newsletter" className="section newsletter-section ghost-grid" style={{ position: 'relative', background: '#D9E2BD' }}>
+      <section id="newsletter" className="section newsletter-section ghost-grid" style={{ position: 'relative', background: 'var(--cream)' }}>
         <div style={{ maxWidth: '640px', position: 'relative', zIndex: 1 }}>
           <p className="label-sm reveal" style={{ color: 'var(--ink-faint)', marginBottom: '20px' }}>
             Newsletter

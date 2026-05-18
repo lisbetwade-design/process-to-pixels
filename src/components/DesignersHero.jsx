@@ -26,7 +26,7 @@ const RESOURCE_CARDS = [
 
 const ACCENT = '#5C3AFF'
 const OLIVE_BG = '#D9E2BD'
-const STACK_HEIGHT = 540
+const STACK_HEIGHT = 420
 
 const POSITIONS = [
   { top: 4,   xOff: -10, rot: -2.2, w: 86 },
@@ -76,7 +76,7 @@ function StatusPill() {
         }}
       />
       <span className="hero-label" style={{ fontSize: 10.5, letterSpacing: '.14em' }}>
-        6 free resources
+        5 free resources
       </span>
     </div>
   )
@@ -114,7 +114,7 @@ function CornerStamp() {
   )
 }
 
-function ResourceCard({ r, pos, isActive, onActivate }) {
+function ResourceCard({ r, pos, isActive, onActivate, delay }) {
   const tones = {
     navy:   { bg: 'var(--ink)', fg: '#F4F1E8',     sub: 'rgba(244,241,232,.65)', badge: 'rgba(244,241,232,.12)' },
     cream:  { bg: '#F7F3E6',    fg: 'var(--ink)',  sub: '#3a3550',               badge: 'rgba(26,23,48,.08)' },
@@ -123,40 +123,48 @@ function ResourceCard({ r, pos, isActive, onActivate }) {
   const styles = tones[r.tone]
 
   return (
-    <article
-      onMouseEnter={onActivate}
-      onFocus={onActivate}
-      tabIndex={0}
+    <div
+      className="hero-card-enter"
       style={{
         position: 'absolute',
         top: pos.top,
         left: '50%',
         width: `calc(${pos.w}% - 16px)`,
-        transform: `translateX(calc(-50% + ${pos.xOff}px)) rotate(${pos.rot}deg)${isActive ? ' translateY(-4px) scale(1.015)' : ''}`,
-        transformOrigin: '50% 50%',
         zIndex: isActive ? 10 : 1,
-        background: styles.bg,
-        color: styles.fg,
-        borderRadius: 18,
-        padding: '24px 22px 20px',
-        boxShadow: isActive
-          ? '0 18px 44px rgba(31,43,8,.28), 0 2px 0 rgba(255,255,255,.4) inset'
-          : '0 12px 32px rgba(31,43,8,.18), 0 2px 0 rgba(255,255,255,.4) inset',
-        transition: 'transform .42s cubic-bezier(.3,.7,.4,1), box-shadow .3s ease',
-        cursor: 'pointer',
-        outline: 'none',
+        '--x-off': `${pos.xOff}px`,
+        '--delay': `${delay}ms`,
       }}
     >
-      <span style={{ display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: 999, fontSize: 11, fontWeight: 600, letterSpacing: '.02em', background: styles.badge, color: styles.fg, marginBottom: 14 }}>
-        {r.badge}
-      </span>
-      <h3 className="hero-display" style={{ margin: '0 0 10px', fontSize: 22, letterSpacing: '-.03em', lineHeight: 1.1 }}>{r.title}</h3>
-      <p style={{ margin: '0 0 12px', fontSize: 13.5, lineHeight: 1.5, color: styles.sub, maxWidth: 380 }}>{r.blurb}</p>
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: styles.fg }}>
-        <span style={{ width: 6, height: 6, borderRadius: '50%', background: styles.fg, opacity: 0.7 }} />
-        {r.promise}
-      </div>
-    </article>
+      <article
+        onMouseEnter={onActivate}
+        onFocus={onActivate}
+        tabIndex={0}
+        style={{
+          transform: `rotate(${pos.rot}deg)${isActive ? ' translateY(-4px) scale(1.015)' : ''}`,
+          transformOrigin: '50% 50%',
+          background: styles.bg,
+          color: styles.fg,
+          borderRadius: 18,
+          padding: '24px 22px 20px',
+          boxShadow: isActive
+            ? '0 18px 44px rgba(31,43,8,.28), 0 2px 0 rgba(255,255,255,.4) inset'
+            : '0 12px 32px rgba(31,43,8,.18), 0 2px 0 rgba(255,255,255,.4) inset',
+          transition: 'transform .42s cubic-bezier(.3,.7,.4,1), box-shadow .3s ease',
+          cursor: 'pointer',
+          outline: 'none',
+        }}
+      >
+        <span style={{ display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: 999, fontSize: 11, fontWeight: 600, letterSpacing: '.02em', background: styles.badge, color: styles.fg, marginBottom: 14 }}>
+          {r.badge}
+        </span>
+        <h3 className="hero-display" style={{ margin: '0 0 10px', fontSize: 22, letterSpacing: '-.03em', lineHeight: 1.1 }}>{r.title}</h3>
+        <p style={{ margin: '0 0 12px', fontSize: 13.5, lineHeight: 1.5, color: styles.sub, maxWidth: 380 }}>{r.blurb}</p>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: styles.fg }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: styles.fg, opacity: 0.7 }} />
+          {r.promise}
+        </div>
+      </article>
+    </div>
   )
 }
 
@@ -175,6 +183,7 @@ function StackedResources() {
           pos={POSITIONS[i]}
           isActive={i === activeIdx}
           onActivate={() => setActiveIdx(i)}
+          delay={500 + (RESOURCE_CARDS.length - 1 - i) * 220}
         />
       ))}
     </div>
@@ -197,13 +206,13 @@ function LeftColumn() {
     >
       <PixelGridBg />
 
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, marginBottom: 38, flexWrap: 'wrap' }}>
-        <div className="hero-label" style={{ color: '#6c6580' }}>※ Free UX/UI Resources & Guides</div>
+      <div className="hero-enter" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 16, marginBottom: 38, '--delay': '0ms' }}>
         <StatusPill />
+        <div className="hero-label" style={{ color: '#6c6580' }}>※ Free UX/UI Resources & Guides</div>
       </div>
 
       <div
-        className="hero-display"
+        className="hero-display hero-enter"
         style={{
           position: 'relative',
           fontSize: 'clamp(36px, 4.4vw, 64px)',
@@ -211,6 +220,7 @@ function LeftColumn() {
           marginBottom: 34,
           lineHeight: 1.5,
           letterSpacing: '-.035em',
+          '--delay': '90ms',
         }}
       >
         <div style={{ whiteSpace: 'nowrap' }}>
@@ -223,6 +233,7 @@ function LeftColumn() {
       </div>
 
       <p
+        className="hero-enter"
         style={{
           position: 'relative',
           margin: '0 0 36px',
@@ -231,12 +242,13 @@ function LeftColumn() {
           lineHeight: 1.55,
           color: '#3a3550',
           fontWeight: 400,
+          '--delay': '180ms',
         }}
       >
         Free templates, frameworks, and guides from 6+ years of working across SaaS, healthcare, fashion, and beyond. Built to help you ship better work, faster.
       </p>
 
-      <div style={{ position: 'relative', display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      <div className="hero-enter" style={{ position: 'relative', display: 'flex', gap: 12, flexWrap: 'wrap', '--delay': '270ms' }}>
         <a
           href="#resources"
           onClick={(e) => { e.preventDefault(); document.getElementById('resources')?.scrollIntoView({ behavior: 'smooth' }) }}
@@ -312,6 +324,44 @@ export default function DesignersHero() {
         @keyframes dhPulse {
           0%, 100% { box-shadow: 0 0 0 4px rgba(141,170,68,.18); }
           50%      { box-shadow: 0 0 0 7px rgba(141,170,68,.05); }
+        }
+        @keyframes heroIn {
+          from { opacity: 0; transform: translateY(14px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroCardIn {
+          0%   { opacity: 0; transform: translateX(calc(-50% + var(--x-off, 0px))) translateY(-120px); }
+          60%  { opacity: 1; }
+          100% { opacity: 1; transform: translateX(calc(-50% + var(--x-off, 0px))) translateY(0); }
+        }
+        .hero-label {
+          font-family: "JetBrains Mono", ui-monospace, monospace;
+          font-size: 10.5px;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+        .hero-display {
+          font-family: "Boldonse", "Bricolage Grotesque", "Cabinet Grotesk", sans-serif;
+          font-optical-sizing: auto;
+        }
+        .hero-enter {
+          opacity: 0;
+          animation: heroIn .7s cubic-bezier(.2,.65,.25,1) forwards;
+          animation-delay: var(--delay, 0ms);
+          will-change: opacity, transform;
+        }
+        .hero-card-enter {
+          opacity: 0;
+          transform: translateX(calc(-50% + var(--x-off, 0px))) translateY(-120px);
+          animation: heroCardIn 1.05s cubic-bezier(.34, .04, .3, 1) forwards;
+          animation-delay: var(--delay, 0ms);
+          will-change: opacity, transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-enter, .hero-card-enter { animation: none; opacity: 1; }
+          .hero-enter { transform: none; }
+          .hero-card-enter { transform: translateX(calc(-50% + var(--x-off, 0px))); }
         }
         .designers-hero-grid {
           display: grid;
